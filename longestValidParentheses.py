@@ -1,3 +1,5 @@
+import unittest
+
 class Solution(object):
     def longestValidParentheses(self, s):
         """
@@ -22,14 +24,20 @@ class Solution(object):
 class TestUM(unittest.TestCase):
  
     def setUp(self):
-        pass
+        self.s = Solution()
  
+    def testBaseCase(self): 
+        self.assertEqual(self.s.longestValidParentheses("") , 0)
+        self.assertEqual(self.s.longestValidParentheses("(") , 0)
+        self.assertEqual(self.s.longestValidParentheses(")") , 0)
+        self.assertEqual(self.s.longestValidParentheses("((((") , 0)
+        self.assertEqual(self.s.longestValidParentheses("))))") , 0)
+        self.assertEqual(self.s.longestValidParentheses("><") , 0)
+        
     def testlongestValidParentheses(self): 
-    s = Solution()
-    self.assertEqual(s.longestValidParentheses("") , 0)
-    self.assertEqual(s.longestValidParentheses("()") , 2)
-    self.assertEqual(s.longestValidParentheses("()()") , 4)
-    self.assertEqual(s.longestValidParentheses("(()()") , 4)
-    self.assertEqual(s.longestValidParentheses("(") , 1)
-    self.assertEqual(s.longestValidParentheses(")") , 1)
-    self.assertEqual(s.longestValidParentheses("((((") , 0)
+        self.assertEqual(self.s.longestValidParentheses("()") , 2)
+        self.assertEqual(self.s.longestValidParentheses("()()") , 4)
+        self.assertEqual(self.s.longestValidParentheses("(()()") , 4)
+        
+if __name__ == '__main__':
+    unittest.main()
